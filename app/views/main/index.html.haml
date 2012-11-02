@@ -1,0 +1,58 @@
+%div{:class => 'row-fluid'}
+  #wrap
+
+
+    
+
+%script#reportView{:type => "text/x-handlebars-template"}
+  %h3{:style => "margin:10px;"}
+  #error_holder
+  %input.input-medium{:type => 'text', :value => '{{name}}', :class=>'reportName', :id => "report{{_id}}" }
+  .btn-group
+    %button.addFilter.btn Add Filter
+    %button.showReport.btn Show Report
+    %button.saveReport.btn Save Report
+  %ul#currentFilters
+  {{#if report_result_set}}
+  #result-donut
+  %ul
+    {{#each report_result_set.results}}
+    %li {{_id}} total shipments:{{value.total_shipments}} total_charges:{{value.total_charges}} average_cost:{{value.average_cost}}
+    {{/each}}
+  {{/if}}
+
+
+
+
+
+  
+ 
+  
+    
+%script#reportLink{:type => "text/x-handlebars-template"}
+  %a{:style => 'display:block;width:200px;'} {{name}}
+  .btn-group
+    %button.showReport.btn.btn-small Show Report
+    %button.remove_report.btn.btn-small.btn-danger Destroy 
+	
+%script#reportCatalogList{:type => 'text/x-handlebars-template'}
+  
+%script#navMenuView{:type => "text/x-handlebars-template"}
+  %h3 {{menuHeader}}
+  .clear
+  %button.addReport.btn Add Report
+  %a{:href => "http://localhost:3000"} Home
+
+
+%script#reportFilter{:type => "text/x-handlebars-template"}
+
+  %li{:class => 'filterListItem'}   
+    .btn-group{:id => "{{filterIndex}}" }
+      {{#renderSelect fieldNames fieldName name="fieldName" class="span2"}} {{/renderSelect}}
+      {{#renderSelect fieldOperators fieldOperator name="fieldOperator" class="span1"}} {{/renderSelect}}
+      %input.input-small{:type => 'text', :id => "filterVal{{filterIndex}}", :value => "{{fieldValue}}", :name =>"fieldValue"}
+	
+      %button.deleteFilter.btn{:id => "{{filterIndex}}" } -
+      %button.showFilter.btn{:id => "{{filterIndex}}" } ShowFilter
+	
+%script#filterTemplate{:type => "text/x-handlebars-template"} 
