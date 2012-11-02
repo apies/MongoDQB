@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require underscore
 //= require backbone
 //= require backbone-nested-v1.1.2.min.js

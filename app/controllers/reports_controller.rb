@@ -15,11 +15,13 @@ class ReportsController < ApplicationController
   end
   
   def update
+    console.log params
     respond_with Report.update(params[:id], params[:entry])
   end
   
   def destroy
-    respond_with Report.destroy(params[:id])
+    report = Report.find(params[:id])
+    respond_with report.delete
   end
   
   

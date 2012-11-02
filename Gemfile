@@ -8,9 +8,9 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'mongoid', '~>3.0.4'
 gem "haml-rails"
-#gem "therubyracer"
-#gem "less" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-#gem "twitter-bootstrap-rails"
+gem "therubyracer"
+gem "less" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
 
 
 group :development, :test do
@@ -25,7 +25,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'handlebars_assets'
-  
+  gem 'twitter-bootstrap-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
