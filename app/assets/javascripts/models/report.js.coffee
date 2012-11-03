@@ -1,6 +1,6 @@
 class MongoDQB.Models.Report extends Backbone.NestedModel
 	idAttribute: "_id"
-	urlRoot: 'api/reports'
+	urlRoot: '/api/reports'
 	toJSON: ->
 		report = _.extend(@attributes )
 	defaults:

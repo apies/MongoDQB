@@ -15,8 +15,12 @@ class ReportsController < ApplicationController
   end
   
   def update
-    console.log params
-    respond_with Report.update(params[:id], params[:entry])
+    #console.log params
+    report = params[:report]
+    puts
+    puts
+    puts report
+    #respond_with Report.update(params[:id], params[:entry])
   end
   
   def destroy
