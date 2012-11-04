@@ -5,7 +5,9 @@ MongoDQB::Application.routes.draw do
 
   #get "main/index"
   scope "api" do
-    resources :reports
+    resources :reports do
+      resources :report_filters
+    end
   end
   
   

@@ -11,9 +11,6 @@ class MongoDQB.Views.AppView extends Backbone.View
 	render: ->
 		console.log 'app view rendering'
 		$(@el).empty()
-		console.log $(@el)
-		console.log $('#wrap')
-		$(@el).append('<h1>HELLO THERE!!!!!!!</h1>')
 		$(@el).append subview.render().el for subview in @subviews
 		$('#currentReport').remove()
 		$('body').append('<div id="currentReport" class="well"></div>')

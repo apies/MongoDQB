@@ -11,20 +11,24 @@ class MongoDQB.Views.ReportView extends Backbone.View
 		reportTemplate = Handlebars.compile(@template)
 		$(@el).html(reportTemplate(@model.toJSON()))
 		currentFilters = @model.get('report_filters')
-		i = 1
-		for filter in currentFilters
-			filter = new MongoDQB.Models.ReportFilter(fieldName: filter.fieldName, fieldOperator: filter.fieldOperator, fieldValue: filter.fieldValue)
-			filter.filterIndex = "filter#{i}"
-			@renderFilter(filter)
-			i += 1
-		if @model.toJSON()["report_result_set"] and not $('svg').length 
-			results = @model.toJSON()["report_result_set"]["results"]
-			@renderDonut(results)
-		@
+		currentFilterCollection = new MongoDQB.Collections.ReportFilters
+		currentFilterCollection.url = "/api/reports/#{@model.get('_id')}/report_filters"
+		console.log currentFilterCollection 
+		currentFilterCollection.fetch()
+		#i = 1
+		#for filter in currentFilters
+		#	filter = new MongoDQB.Models.ReportFilter(fieldName: filter.fieldName, fieldOperator: filter.fieldOperator, fieldValue: filter.fieldValue)
+		#	filter.filterIndex = "filter#{i}"
+		#	@renderFilter(filter)
+		#	i += 1
+		#if @model.toJSON()["report_result_set"] and not $('svg').length 
+		#	results = @model.toJSON()["report_result_set"]["results"]
+		#	@renderDonut(results)
+		#@
 		
 	renderFilter:  (filter) =>
 		filTemplate = Handlebars.compile(@filterTemplate)
-		$('#currentFilters').append(filTemplate(filter))
+		$('#currentFilters').append(filTemplate(filter.toJSON()))
 		fieldName = $("##{filter.filterIndex}").children("select[name='fieldName']").val()
 		if fieldName.match(/date/i)
 			dateInput = $("##{filter.filterIndex}").children("input[name='fieldValue']")
@@ -58,6 +62,7 @@ class MongoDQB.Views.ReportView extends Backbone.View
 			
 	deleteFilter: (e) ->
 		filterIndex = parseInt($(e.target).parent().attr('id').match(/\w+(\d+)/)[1]) - 1
+		console.log "deleting filter #{filterIndex}"
 		@model.remove("report_filters[#{filterIndex}]")
 		@
 			
