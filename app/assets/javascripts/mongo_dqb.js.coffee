@@ -4,7 +4,7 @@ window.MongoDQB =
 	Views: {}
 	Routers: {}
 	init: ->
-		new MongoDQB.Routers.ReportRouter()
+		MongoDQB.Routers.appRouter = new MongoDQB.Routers.ReportRouter()
 		Backbone.history.start(pushState: true)
 
 $(document).ready ->

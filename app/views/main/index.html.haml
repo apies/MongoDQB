@@ -44,15 +44,13 @@
   %a{:href => "http://localhost:3000"} Home
 
 
-%script#reportFilter{:type => "text/x-handlebars-template"}
-
-  %li{:class => 'filterListItem'}   
-    .btn-group{:id => "{{filterIndex}}" }
-      {{#renderSelect fieldNames fieldName name="fieldName" class="span2"}} {{/renderSelect}}
-      {{#renderSelect fieldOperators fieldOperator name="fieldOperator" class="span1"}} {{/renderSelect}}
-      %input.input-small{:type => 'text', :id => "filterVal{{filterIndex}}", :value => "{{fieldValue}}", :name =>"fieldValue"}
+%script#reportFilter{:type => "text/x-handlebars-template"} 
+  .btn-group{:id => "{{filterIndex}}" }
+    {{#renderSelect fieldNames fieldName name="fieldName" class="span2"}} {{/renderSelect}}
+    {{#renderSelect fieldOperators fieldOperator name="fieldOperator" class="span1"}} {{/renderSelect}}
+    %input.input-small{:type => 'text', :value => "{{fieldValue}}", :name =>"fieldValue"}
 	
-      %button.deleteFilter.btn{:id => "{{filterIndex}}" } -
-      %button.showFilter.btn{:id => "{{filterIndex}}" } ShowFilter
+    %button.deleteFilter.btn{:id => "{{filterIndex}}" } -
+    %button.showFilter.btn{:id => "{{filterIndex}}" } ShowFilter
 	
 %script#filterTemplate{:type => "text/x-handlebars-template"} 

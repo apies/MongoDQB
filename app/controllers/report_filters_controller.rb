@@ -4,38 +4,33 @@ class ReportFiltersController < ApplicationController
   
   def index
     report = Report.find(params[:report_id])
-    binding.pry
-    respond_with Report.all
+    report_filters = ReportFilter.where(:report_id => params[:report_id])
+    respond_with report_filters
   end
   
   def show
-    respond_with Report.find(params[:id])
+    respond_with ReportFilter.find(params[:id])
   end
   
   def create
-    report = params[:report]
-    report_filters = params[:report_filters]
-    report[:report_filters] = report_filters
-    respond_with Report.create(params[:report])
+    report = Report.find(params[:report_id])
+    filter = params[:report_filter]
+    filter[:report_id] = report.id
+    #report.report_filters.build(filter)
+    #report.save
+    report_filter = ReportFilter.create(filter)
+    #binding.pry
+    respond_with(report_filter, :location => "nil")
   end
   
   def update
     #console.log params
-    report = params[:report]
-    report_filters = params[:report_filters]
-    report[:report_filters] = report_filters
-    #save shipments to seperate variable for reattaching before passing back to client
-    shipments = report["report_result_set"]
-    report.delete("report_result_set")
-    db_report = Report.find report[:_id]
-    report.delete(:_id)
-    db_report.update_attributes(report)
-    respond_with db_report
+
   end
   
   def destroy
-    report = Report.find(params[:id])
-    respond_with report.delete
+    report_filter = ReportFilter.find(params[:id])
+    respond_with report_filter.delete
   end
   
   

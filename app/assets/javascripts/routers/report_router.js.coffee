@@ -3,8 +3,8 @@ class MongoDQB.Routers.ReportRouter extends Backbone.Router
 		'' : 'index'
 		'reports/:id': 'show'
 	initialize: ->
-		@view = new MongoDQB.Views.AppView(collection: MongoDQB.Collections.Reports)
-		@view.render()
+		MongoDQB.Views.appView = new MongoDQB.Views.AppView(collection: MongoDQB.Collections.Reports)
+		MongoDQB.Views.appView.render()
 		MongoDQB.Collections.Reports.fetch()
 		@
 	index: ->
@@ -12,5 +12,5 @@ class MongoDQB.Routers.ReportRouter extends Backbone.Router
 		@
 	show: (id) ->
 		report = MongoDQB.Collections.Reports.get(id)
-		@view.renderReport(report)
+		MongoDQB.Views.appView.renderReport(report)
 		@

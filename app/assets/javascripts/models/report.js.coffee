@@ -5,7 +5,7 @@ class MongoDQB.Models.Report extends Backbone.Model
 		report = _.extend(@attributes )
 	defaults:
 		name: 'Most Awesome Report Ever'
-		report_filters: []
+		#report_filters: []
 		
 	addFilter: (fName = 'fm_freight_cost', fOperator = 'gte', fValue='1') ->
 		filter = new MongoDQB.Models.ReportFilter(fieldName: fName, fieldOperator: fOperator, fieldValue: fValue, report_id: @get('_id'))

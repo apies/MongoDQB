@@ -14,6 +14,7 @@ class MongoDQB.Views.AppView extends Backbone.View
 		$(@el).append subview.render().el for subview in @subviews
 		$('#currentReport').remove()
 		$('body').append('<div id="currentReport" class="well"></div>')
+		@delegateEvents()
 		@
 			
 	renderReport: (report) ->

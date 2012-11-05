@@ -12,12 +12,7 @@ class MongoDQB.Views.AppMenuView extends Backbone.View
 	addReport: ->
 		report = new MongoDQB.Models.Report
 		@collection.add report
-		@renderReport(report)
-		@
-	renderReport: (report) ->
-		MongoDQB.Views.reportView.close() if MongoDQB.Views.reportView
-		MongoDQB.Views.reportView = new MongoDQB.Views.ReportView(model: report)
-		MongoDQB.Views.reportView.render().el
+		MongoDQB.Views.appView.renderReport(report)
 		@
 			
 	events:
