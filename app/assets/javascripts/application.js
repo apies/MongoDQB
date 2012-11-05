@@ -16,7 +16,9 @@
 //= require underscore
 //= require backbone
 //= require backbone-nested-v1.1.2.min.js
+//= require handlebars.runtime
 //= require handlebars
+//= require_tree ./templates
 //
 //= require .//mongo_dqb
 //

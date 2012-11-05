@@ -18,7 +18,6 @@ class MongoDQB.Views.ReportView extends MongoDQB.Views.BaseAppView
 		@
 		
 	renderFilter:  (filter) ->
-		filTemplate = Handlebars.compile(@filterTemplate)
 		filterView = new MongoDQB.Views.ReportFilterView(model: filter)
 		$('#currentFilters').append(filterView.render().el)
 		@

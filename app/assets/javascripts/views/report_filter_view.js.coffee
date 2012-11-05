@@ -2,11 +2,12 @@ class MongoDQB.Views.ReportFilterView extends MongoDQB.Views.BaseAppView
 	tagName: 'li'
 	className: 'filterListItem'
 	initialize: ->
-		@template = $('#reportFilter').html()
+		#@template = HandlebarsTemplates['report_filter'](context) #$('#reportFilter').html()
 		@
 	render: ->
-		filterView = Handlebars.compile(@template)
-		$(@el).append(filterView(@model.toJSON()))
+		#filterView = Handlebars.compile(@template)
+		$(@el).append(HandlebarsTemplates['report_filter'](@model.toJSON()))
+		#$(@el).append(filterView(@model.toJSON()))
 		@
 	deleteFilter: =>
 		@model.destroy(

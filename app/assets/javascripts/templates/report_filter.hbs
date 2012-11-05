@@ -1,0 +1,8 @@
+<div class ="btn-group">
+  {{#renderSelect fieldNames fieldName name="fieldName" class="span2"}} {{/renderSelect}}
+  {{#renderSelect fieldOperators fieldOperator name="fieldOperator" class="span1"}} {{/renderSelect}}
+  <input class ="input-small" type='text' value = "{{fieldValue}}" name ="fieldValue"></input>
+	
+  <button class ="remove_filter btn" id = "{{filterIndex}}"> - </button>
+  <button class="showFilter btn" id ="{{filterIndex}}" > ShowFilter</button>
+ </div>
