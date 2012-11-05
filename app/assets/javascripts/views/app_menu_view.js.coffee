@@ -15,8 +15,9 @@ class MongoDQB.Views.AppMenuView extends Backbone.View
 			report.attributes
 			success: (model) =>
 				console.log 'creation success!'
+				console.log model
 				@collection.add(model)
-				Backbone.history.navigate("reports/#{model.get('_id')}", true)
+				Backbone.history.navigate("reports/#{model.get('id')}", true)
 			error: (msg) ->
 				console.log msg
 

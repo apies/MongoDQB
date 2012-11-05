@@ -1,8 +1,4 @@
-class ReportFilter
-  include Mongoid::Document
-  field :fieldOperator, type: String
-  field :fieldValue, type: String
-  field :fieldName, type: String
-  #embedded_in :report
-  belongs_to :report
+class ReportFilter < ActiveRecord::Base
+	attr_accessible :fieldOperator, :fieldValue, :fieldName
+  	belongs_to :report
 end

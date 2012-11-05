@@ -4,7 +4,8 @@ class ReportFiltersController < ApplicationController
   
   def index
     report = Report.find(params[:report_id])
-    report_filters = ReportFilter.where(:report_id => params[:report_id])
+    #binding.pry
+    report_filters = report.report_filters
     respond_with report_filters
   end
   
@@ -14,22 +15,18 @@ class ReportFiltersController < ApplicationController
   
   def create
     report = Report.find(params[:report_id])
-    filter = params[:report_filter]
-    filter[:report_id] = report.id
-    #report.report_filters.build(filter)
-    #report.save
-    report_filter = ReportFilter.create(filter)
-    #binding.pry
-    respond_with(report_filter, :location => "nil")
+    filter = report.report_filters.build(params[:report_filter])
+    report.save
+    respond_with(filter, :location => nil)
   end
   
   def update
     report_filter = params[:report_filter]
-    db_filter = ReportFilter.find report_filter[:_id]
-    report_filter.delete(:_id)
+    db_filter = ReportFilter.find params[:id]
+    #report_filter.delete(:_id)
     db_filter.update_attributes(report_filter)
     #binding.pry
-    respond_with(db_filter)
+    respond_with(db_filter, :location => nil)
 
   end
   

@@ -16,8 +16,7 @@ class ReportsController < ApplicationController
   
   def update
     report = params[:report]
-    db_report = Report.find report[:_id]
-    report.delete(:_id)
+    db_report = Report.find params[:id]
     db_report.update_attributes(report)
     respond_with db_report
   end

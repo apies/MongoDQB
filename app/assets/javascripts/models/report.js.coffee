@@ -1,5 +1,5 @@
 class MongoDQB.Models.Report extends Backbone.Model
-	idAttribute: "_id"
+	#idAttribute: "_id"
 	urlRoot: '/api/reports'
 	toJSON: ->
 		report = _.extend(@attributes )
@@ -8,7 +8,7 @@ class MongoDQB.Models.Report extends Backbone.Model
 		#report_filters: []
 		
 	addFilter: (fName = 'fm_freight_cost', fOperator = 'gte', fValue='1') ->
-		filter = new MongoDQB.Models.ReportFilter(fieldName: fName, fieldOperator: fOperator, fieldValue: fValue, report_id: @get('_id'))
+		filter = new MongoDQB.Models.ReportFilter(fieldName: fName, fieldOperator: fOperator, fieldValue: fValue, report_id: @get('id'))
 		@add( 'report_filters', filter )
 		@
 		

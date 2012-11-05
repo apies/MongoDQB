@@ -5,20 +5,18 @@ class MongoDQB.Views.ReportFilterView extends MongoDQB.Views.BaseAppView
 		#@template = HandlebarsTemplates['report_filter'](context) #$('#reportFilter').html()
 		@
 	render: ->
-		#filterView = Handlebars.compile(@template)
 		$(@el).append(HandlebarsTemplates['report_filter'](@model.toJSON()))
-		#$(@el).append(filterView(@model.toJSON()))
 		@
 	deleteFilter: =>
-		@model.destroy(
-			wait: true
-			success: (model, response) ->
-				console.log "#{model}:#{response}"
-			error: (e) ->
-				console.log e
+		#@model.destroy(
+		#	wait: true
+		#	success: (model, response) ->
+		#		console.log "#{model}:#{response}"
+		#	error: (e) ->
+		#		console.log e
 
-		)
-		console.log @model.destroy()
+		#)
+		@model.destroy()
 		@unbind()
 		@remove()
 		@

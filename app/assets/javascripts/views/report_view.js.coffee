@@ -2,15 +2,13 @@ class MongoDQB.Views.ReportView extends MongoDQB.Views.BaseAppView
 	el: '#currentReport'
 	className: 'well'
 	initialize: ->
-		@template = $('#reportView').html()
 		@currentFilterCollection = new MongoDQB.Collections.ReportFilters
-		@currentFilterCollection.url = "/api/reports/#{@model.get('_id')}/report_filters"
+		@currentFilterCollection.url = "/api/reports/#{@model.get('id')}/report_filters"
 		@currentFilterCollection.bind('all', @render, @)
 		@currentFilterCollection.fetch() unless @model.isNew() #@currentFilterCollection.models.length is 0
 		@
 	render: ->
-		reportTemplate = Handlebars.compile(@template)
-		$(@el).html(reportTemplate(@model.toJSON()))
+		$(@el).html(HandlebarsTemplates['report_view'](@model.toJSON()))
 		@currentFilterCollection.each(@renderFilter)
 		#if @model.toJSON()["report_result_set"] and not $('svg').length 
 		#	results = @model.toJSON()["report_result_set"]["results"]
@@ -37,7 +35,7 @@ class MongoDQB.Views.ReportView extends MongoDQB.Views.BaseAppView
 				
 	addFilter: ->
 		unless @model.isNew()
-			@currentFilterCollection.create(report_id: @model.get('_id'))
+			@currentFilterCollection.create(report_id: @model.get('id'))
 		@
 
 	close: =>

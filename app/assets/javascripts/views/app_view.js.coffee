@@ -18,6 +18,7 @@ class MongoDQB.Views.AppView extends Backbone.View
 		@
 			
 	renderReport: (report) ->
+		console.log report
 		MongoDQB.Views.reportView.close() if MongoDQB.Views.reportView
 		MongoDQB.Views.reportView = new MongoDQB.Views.ReportView(model: report)
 		MongoDQB.Views.reportView.render().el

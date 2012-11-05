@@ -1,5 +1,5 @@
 class MongoDQB.Models.ReportFilter extends Backbone.Model
-	idAttribute: "_id"
+	#idAttribute: "_id"
 	urlRoot: ->
 		"/api/reports/#{@get('report_id')}/report_filters"
 
