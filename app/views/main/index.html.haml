@@ -26,7 +26,7 @@
 
 
   
- 
+
   
     
 %script#reportLink{:type => "text/x-handlebars-template"}
@@ -50,7 +50,7 @@
     {{#renderSelect fieldOperators fieldOperator name="fieldOperator" class="span1"}} {{/renderSelect}}
     %input.input-small{:type => 'text', :value => "{{fieldValue}}", :name =>"fieldValue"}
 	
-    %button.deleteFilter.btn{:id => "{{filterIndex}}" } -
+    %button.remove_filter.btn{:id => "{{filterIndex}}" } -
     %button.showFilter.btn{:id => "{{filterIndex}}" } ShowFilter
 	
 %script#filterTemplate{:type => "text/x-handlebars-template"} 

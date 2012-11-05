@@ -5,7 +5,7 @@ class MongoDQB.Views.ReportView extends Backbone.View
 		@template = $('#reportView').html()
 		@currentFilterCollection = new MongoDQB.Collections.ReportFilters
 		@currentFilterCollection.url = "/api/reports/#{@model.get('_id')}/report_filters"
-		@currentFilterCollection.on('all', @render, @)
+		@currentFilterCollection.bind('all', @render, @)
 		@currentFilterCollection.fetch() unless @model.isNew() #@currentFilterCollection.models.length is 0
 		@
 	render: ->
@@ -49,9 +49,10 @@ class MongoDQB.Views.ReportView extends Backbone.View
 
 		else
 			@model.save(
-				success: ->
-					console.log 'Saving Model from addFilter function'
-					attributes = report_id: @model.get('_id')
+				success: (report) ->
+					Backbone.history.navigate("reports/#{report.get('_id')}", true)
+					attributes = report_id: report.get('_id')
+
 					@currentFilterCollection.create( attributes,
 						success: ->
 							console.log 'SAVED DURING REPORT CREATION'
