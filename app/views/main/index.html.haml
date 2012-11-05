@@ -7,7 +7,7 @@
 %script#reportView{:type => "text/x-handlebars-template"}
   %h3{:style => "margin:10px;"}
   #error_holder
-  %input.input-medium{:type => 'text', :value => '{{name}}', :class=>'reportName', :id => "report{{_id}}" }
+  %input.input-medium{:type => 'text', :value => '{{name}}', :name => 'name',  :class=>'reportName', :id => "report{{_id}}" }
   .btn-group
     %button.addFilter.btn Add Filter
     %button.showReport.btn Show Report

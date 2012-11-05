@@ -1,4 +1,4 @@
-class MongoDQB.Views.ReportFilterView extends Backbone.View
+class MongoDQB.Views.ReportFilterView extends MongoDQB.Views.BaseAppView
 	tagName: 'li'
 	className: 'filterListItem'
 	initialize: ->
@@ -21,6 +21,12 @@ class MongoDQB.Views.ReportFilterView extends Backbone.View
 		@unbind()
 		@remove()
 		@
+
+	viewBindInputs: ->
+		super
+		@model.save()
+		@
 	events: ->
 		'click .remove_filter': 'deleteFilter'
+		'change :input' : 'viewBindInputs'
 	

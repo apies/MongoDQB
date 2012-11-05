@@ -24,7 +24,12 @@ class ReportFiltersController < ApplicationController
   end
   
   def update
-    #console.log params
+    report_filter = params[:report_filter]
+    db_filter = ReportFilter.find report_filter[:_id]
+    report_filter.delete(:_id)
+    db_filter.update_attributes(report_filter)
+    #binding.pry
+    respond_with(db_filter)
 
   end
   

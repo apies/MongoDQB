@@ -1,4 +1,4 @@
-class MongoDQB.Views.ReportView extends Backbone.View
+class MongoDQB.Views.ReportView extends MongoDQB.Views.BaseAppView
 	el: '#currentReport'
 	className: 'well'
 	initialize: ->
@@ -35,33 +35,10 @@ class MongoDQB.Views.ReportView extends Backbone.View
 		)
 		@
 			
-			
-	viewBindInputs: (e) =>
-		newKey = $(e.target).attr('name')
-		newVal = $(e.target).val()
-		@model.set(newKey, newVal)
-		@
-		
-			
+				
 	addFilter: ->
 		unless @model.isNew()
 			@currentFilterCollection.create(report_id: @model.get('_id'))
-
-		else
-			@model.save(
-				success: (report) ->
-					Backbone.history.navigate("reports/#{report.get('_id')}", true)
-					attributes = report_id: report.get('_id')
-
-					@currentFilterCollection.create( attributes,
-						success: ->
-							console.log 'SAVED DURING REPORT CREATION'
-						error: ->
-							console.log "error during report creation reportfilter save"
-					)
-				error: (model, error) =>
-					@showError(model, error)
-			)
 		@
 
 	close: =>
