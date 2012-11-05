@@ -11,8 +11,16 @@ class MongoDQB.Views.AppMenuView extends Backbone.View
 		@
 	addReport: ->
 		report = new MongoDQB.Models.Report
-		@collection.add report
-		MongoDQB.Views.appView.renderReport(report)
+		report.save(
+			report.attributes
+			success: (model) =>
+				console.log 'creation success!'
+				@collection.add(model)
+				Backbone.history.navigate("reports/#{model.get('_id')}", true)
+			error: (msg) ->
+				console.log msg
+
+		)
 		@
 			
 	events:
