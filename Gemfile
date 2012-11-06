@@ -18,7 +18,8 @@ gem "twitter-bootstrap-rails"
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara' #, :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'capybara-webkit'
   gem 'launchy'
 end
 

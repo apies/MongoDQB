@@ -69,7 +69,8 @@ describe Query do
     filter2 = QueryFilter.new("client_id", "gte", 1000)
     query1 = Query.new(filter1, filter2)
     shipment_reports = @ShipmentReports.find(  query1.compose )
-    report = JSON.parse(Report.first.to_json)
+
+    report = Report.create!(:name => 'test report')
     report_hash = JSON.parse(report.to_json)
     #turn shipments queries from mongodb into gigantic hash 
     shipments = JSON.parse(shipment_reports.to_json)

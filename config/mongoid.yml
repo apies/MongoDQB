@@ -69,9 +69,9 @@ development:
 test:
   sessions:
     default:
-      database: mongo_dqb_test
+      database: rootpi
       hosts:
-        - localhost:27017
+        - xmltester:27017
       options:
         consistency: :strong
         # In the test environment we lower the retries and retry interval to

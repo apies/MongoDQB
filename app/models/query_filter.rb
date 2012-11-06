@@ -14,7 +14,11 @@ class QueryFilter
   	end
   
 	def compose
-		{ @q_field => {"$#{@q_op}" => q_val_string_cast(@q_val)} }
+    unless @q_op == "eq"
+      { @q_field => {"$#{@q_op}" => q_val_string_cast(@q_val)} }
+    else
+      { @q_field => q_val_string_cast(@q_val)}
+    end
 	end
 
 

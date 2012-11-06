@@ -32,4 +32,7 @@ MongoDQB::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  #internets said i need this for webkit capybara js testing
+  config.action_dispatch.show_exceptions = true
 end
