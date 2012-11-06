@@ -7,8 +7,8 @@
   <button class='saveReport btn'>Save Report</button>
 </div>
 <ul id='currentFilters'></ul>
+<div id='result-donut'></div>
 {{#if report_result_set}}
-  <div id='result-donut'></div>
   <ul>
     {{#each report_result_set.results}}
       <li>{{_id}} total shipments:{{value.total_shipments}} total_charges:{{value.total_charges}} average_cost:{{value.average_cost}}</li>

@@ -33,8 +33,23 @@ describe "Reports", js: true do
         page.should have_content("ShowFilter")
         click_button "Save Report"
         page.should_not have_content("Add Filter")
-
     	end
+
+      it "can make a new report and see the resulting morris js pie chart graph" do#
+        visit root_path
+        click_button "Add Report"
+        click_button "Add Filter"
+        #fill_in "fieldValue", :with => 1.0
+        click_button "Show Report"
+          page.should have_content "13,203"
+        #save_and_open_page
+        #page.should have_content "13,203"
+
+      end
+
+
+
+
 
   	end
 end

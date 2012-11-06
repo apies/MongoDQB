@@ -75,9 +75,10 @@ describe Query do
     #turn shipments queries from mongodb into gigantic hash 
     shipments = JSON.parse(shipment_reports.to_json)
     #smash hash together with hammer
-    report[:report_result_set] = shipments
+    report_hash[:report_result_set] = shipments
+    #binding.pry
     #send to client as json
-    parsed_json_report = JSON.parse(report.to_json) 
+    parsed_json_report = JSON.parse(report_hash.to_json) 
     parsed_json_report["report_result_set"].count.should be > 10 
   end
   

@@ -8,11 +8,12 @@ class MongoDQB.Views.ReportView extends MongoDQB.Views.BaseAppView
 		@currentFilterCollection.fetch() unless @model.isNew() #@currentFilterCollection.models.length is 0
 		@
 	render: ->
+		console.log 'report view is rendering!'
 		$(@el).html(HandlebarsTemplates['report_view'](@model.toJSON()))
 		@currentFilterCollection.each(@renderFilter)
-		#if @model.toJSON()["report_result_set"] and not $('svg').length 
-		#	results = @model.toJSON()["report_result_set"]["results"]
-		#	@renderDonut(results)
+		if @model.toJSON()["report_result_set"] and not $('svg').length 
+			results = @model.toJSON()["report_result_set"]["results"]
+			@renderDonut(results)
 		@
 		
 	renderFilter:  (filter) ->
@@ -59,6 +60,7 @@ class MongoDQB.Views.ReportView extends MongoDQB.Views.BaseAppView
 		@model.fetch(
 			success: (result) =>
 				results = result.toJSON()["report_result_set"]["results"]
+				console.log results
 				@renderDonut(results)
 			error: (e) ->
 				console.log e
