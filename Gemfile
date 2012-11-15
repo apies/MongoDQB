@@ -19,8 +19,9 @@ gem "twitter-bootstrap-rails"
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara' #, :git => 'git://github.com/jnicklas/capybara.git'
-  gem 'capybara-webkit'
+  #gem 'capybara-webkit'
   gem 'launchy'
+  gem 'capistrano', '~> 2.11.2'
 end
 
 # Gems used only for assets and not required
