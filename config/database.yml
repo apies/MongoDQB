@@ -26,8 +26,8 @@ test:
 production:
   adapter: postgresql
   database: mongodqb
-  username: apies
-  password: pies84
+  username: postgres
+  password: postgres
   encoding: unicode
   pool: 5
   timeout: 5000
