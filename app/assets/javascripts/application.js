@@ -21,9 +21,7 @@
 //= require raphael
 //= require morris-min
 //= require_tree ./templates
-//
 //= require .//mongo_dqb
-//
 //= require_tree ./models
 //= require_tree ./collections
 //= require ./views/base_report_app_view
