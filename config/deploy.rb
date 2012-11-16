@@ -33,7 +33,7 @@ namespace :deploy do
 	desc "Restart the application"
 	task :restart, :roles => :app, :except => { :no_release => true} do
 		#puts "restart"
-		run "#{try_sudo} kill -s USR2 'cat #{unicorn_pid}'"
+		run "#{try_sudo} kill -s USR2 `cat #{unicorn_pid}`"
 	end
 	task :copy_in_database_yml do
 		run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
