@@ -15,6 +15,10 @@ set :use_sudo, false
 set :deploy_via, :copy
 set :copy_strategy, :export
 
+set :unicorn_config, "#{current_path}/config/unicorn.rb"
+
+set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
+
 
 namespace :deploy do
 	task :start, :roles => :app, :except => { :no_release => true} do
