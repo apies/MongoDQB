@@ -19,17 +19,17 @@ set :copy_strategy, :export
 namespace :deploy do
 	task :start, :roles => :app, :except => { :no_release => true} do
 		puts "start"
-		#run "cd #{current_path} \
-		#     && #{bundle_cmd} exec unicorn -c #{unicorn_config} -E #{rails_env} -D" 
+		run "cd #{current_path} \
+		     && #{bundle_cmd} exec unicorn -c #{unicorn_config} -E #{rails_env} -D" 
 	end
 	task :stop, :roles => :app, :except => { :no_release => true} do
-		puts "stop"
-		#run "#{try_sudo} kill 'cat #{unicorn_pid}' " 
+		#puts "stop"
+		run "#{try_sudo} kill 'cat #{unicorn_pid}' " 
 	end
 	desc "Restart the application"
 	task :restart, :roles => :app, :except => { :no_release => true} do
-		puts "restart"
-		#run "#{try_sudo} kill -s USR2 'cat #{unicorn_pid}' "
+		#puts "restart"
+		run "#{try_sudo} kill -s USR2 'cat #{unicorn_pid}' "
 	end
 	task :copy_in_database_yml do
 		run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
